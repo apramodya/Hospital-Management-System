@@ -20,6 +20,7 @@ import com.edu.hm.dto.ConsultantDTO;
 import com.edu.hm.dto.PatientDTO;
 import com.edu.hm.dto.WardDTO;
 import static com.edu.hm.gui.Main.pnlMain;
+import com.edu.hm.validation.ValidationController;
 import java.awt.Color;
 import java.util.Date;
 
@@ -34,14 +35,14 @@ public class Patient extends javax.swing.JPanel {
      */
     ArrayList<ConsultantDTO> arrayList;
     ArrayList<WardDTO> list;
-
+    
     public Patient() {
         initComponents();
         loadConsultant();
         warCombo();
         setCmbDOB();
         back();
-
+        
     }
 
     /**
@@ -123,6 +124,11 @@ public class Patient extends javax.swing.JPanel {
                 txtTelActionPerformed(evt);
             }
         });
+        txtTel.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtTelKeyReleased(evt);
+            }
+        });
         jPanel2.add(txtTel, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 280, 350, 40));
 
         jLabel2.setFont(new java.awt.Font("Segoe UI Semibold", 1, 18)); // NOI18N
@@ -141,12 +147,27 @@ public class Patient extends javax.swing.JPanel {
         jPanel2.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 160, 217, 65));
 
         txtName1.setFont(new java.awt.Font("Segoe UI Semibold", 0, 18)); // NOI18N
+        txtName1.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtName1KeyReleased(evt);
+            }
+        });
         jPanel2.add(txtName1, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 120, 130, 40));
 
         txtName2.setFont(new java.awt.Font("Segoe UI Semibold", 0, 18)); // NOI18N
+        txtName2.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtName2KeyReleased(evt);
+            }
+        });
         jPanel2.add(txtName2, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 120, 150, 40));
 
         txtName3.setFont(new java.awt.Font("Segoe UI Semibold", 0, 18)); // NOI18N
+        txtName3.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtName3KeyReleased(evt);
+            }
+        });
         jPanel2.add(txtName3, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 120, 140, 40));
 
         jLabel1.setFont(new java.awt.Font("Segoe UI Semibold", 1, 18)); // NOI18N
@@ -158,6 +179,11 @@ public class Patient extends javax.swing.JPanel {
         jPanel2.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 62, 217, 60));
 
         txtNIC.setFont(new java.awt.Font("Segoe UI Semibold", 0, 18)); // NOI18N
+        txtNIC.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtNICKeyReleased(evt);
+            }
+        });
         jPanel2.add(txtNIC, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 70, 340, 40));
 
         txtPatientID.setFont(new java.awt.Font("Segoe UI Semibold", 0, 18)); // NOI18N
@@ -235,12 +261,22 @@ public class Patient extends javax.swing.JPanel {
                 txtGnameActionPerformed(evt);
             }
         });
+        txtGname.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtGnameKeyReleased(evt);
+            }
+        });
         jPanel3.add(txtGname, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 210, 350, 40));
 
         txtGtel.setFont(new java.awt.Font("Segoe UI Semibold", 0, 18)); // NOI18N
         txtGtel.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtGtelActionPerformed(evt);
+            }
+        });
+        txtGtel.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtGtelKeyReleased(evt);
             }
         });
         jPanel3.add(txtGtel, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 320, 350, 40));
@@ -312,6 +348,34 @@ public class Patient extends javax.swing.JPanel {
         refreshPa();        // TODO add your handling code here:
     }//GEN-LAST:event_jButton4ActionPerformed
 
+    private void txtNICKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNICKeyReleased
+        ValidationController.nic(txtNIC);
+    }//GEN-LAST:event_txtNICKeyReleased
+
+    private void txtName1KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtName1KeyReleased
+        ValidationController.name(txtName1);
+    }//GEN-LAST:event_txtName1KeyReleased
+
+    private void txtName2KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtName2KeyReleased
+        ValidationController.name(txtName2);
+    }//GEN-LAST:event_txtName2KeyReleased
+
+    private void txtName3KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtName3KeyReleased
+        ValidationController.name(txtName3);
+    }//GEN-LAST:event_txtName3KeyReleased
+
+    private void txtTelKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtTelKeyReleased
+        ValidationController.phoneNumber(txtTel);
+    }//GEN-LAST:event_txtTelKeyReleased
+
+    private void txtGnameKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtGnameKeyReleased
+        ValidationController.name(txtGname);
+    }//GEN-LAST:event_txtGnameKeyReleased
+
+    private void txtGtelKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtGtelKeyReleased
+        ValidationController.phoneNumber(txtGtel);
+    }//GEN-LAST:event_txtGtelKeyReleased
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JComboBox<String> cmbConsultant;
@@ -363,12 +427,12 @@ public class Patient extends javax.swing.JPanel {
             Logger.getLogger(Patient.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-
+    
     private void setCmbDOB() {
         DateFormat format = new SimpleDateFormat("yyyy-MM-dd");
         jCalendarCombo1.setDateFormat(format);
     }
-
+    
     private void addToPatient() {
         try {
             String patientID = txtPatientID.getText();
@@ -402,11 +466,11 @@ public class Patient extends javax.swing.JPanel {
             Logger.getLogger(Patient.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-
+    
     private void back() {
-
+        
     }
-
+    
     private void warCombo() {
         try {
             list = WardController.getWardDTOs();
@@ -420,7 +484,7 @@ public class Patient extends javax.swing.JPanel {
             Logger.getLogger(Patient.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-
+    
     private void refreshPa() {
         pnlMain.removeAll();
         Patient form = new Patient();
@@ -429,5 +493,5 @@ public class Patient extends javax.swing.JPanel {
         pnlMain.repaint();
         pnlMain.revalidate();
     }
-
+    
 }
