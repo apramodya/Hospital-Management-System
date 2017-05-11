@@ -1,0 +1,107 @@
+drop database hospitalManagementSystem;
+create database hospitalManagementSystem;
+use hospitalManagementSystem;
+create table ward(
+	WID varchar(10) NOT NULL,
+	type varchar(12),
+	description varchar(70),
+	constraint primary key(WID)
+);
+create table test(
+	TID varchar(10) NOT NULL,
+	description varchar(70),
+	price decimal(10,2),
+	constraint primary key(TID)
+);
+create table employee(
+	EID varchar(10) NOT NULL,
+	firstName varchar(12),
+	middleName varchar(12),
+	lastName varchar(12),
+	address varchar(100),
+	tel int,
+	dob date,
+	startDate date,
+	constraint primary key(EID)
+);
+create table consultant(
+	CID varchar(10) NOT NULL,
+	EID varchar(10) NOT NULL,
+	WID varchar(10) NOT NULL,
+	speciality varchar(25),
+	constraint primary key(CID),
+	constraint foreign key(EID)references employee(EID)on delete cascade on update cascade,
+	constraint foreign key(WID)references ward(WID)on delete cascade on update cascade
+);
+create table patient(
+	PID varchar(10) NOT NULL,
+	CID varchar(10),
+	NIC varchar(10),
+	firstName varchar(12),
+	middleName varchar(12),
+	lastName varchar(12),
+	address varchar(100),
+	tel int,
+	dob date,
+	bloodGrup varchar(3),
+	constraint primary key(PID),
+	constraint foreign key(CID)references consultant(CID)on delete cascade on update cascade
+);
+create table testDetail(
+	TDID varchar(10) NOT NULL,
+	TID varchar(10) NOT NULL,
+	PID varchar(10) NOT NULL,
+	result varchar(100),
+	price decimal(10,2),
+	constraint primary key(TDID),
+	constraint foreign key(TID)references test(TId)on delete cascade on update cascade,
+	constraint foreign key(PID)references patient(PID)on delete cascade on update cascade
+);
+create table addmission(
+	AID varchar(10) NOT NULL,
+	PID varchar(10) NOT NULL,
+	WID varchar(10) NOT NULL,
+	startDate date,
+	gurdianName varchar(30),
+	guardianTel int,
+	constraint primary key(AID),
+	constraint foreign key(WID)references ward(WID)on delete cascade on update cascade,
+	constraint foreign key(PID)references patient(PID)on delete cascade on update cascade
+);
+
+create table doctor(
+	DID varchar(10) NOT NULL,
+	EID varchar(10) NOT NULL,
+	WID varchar(10) NOT NULL,
+	speciality varchar(25),
+	constraint primary key(DID),
+	constraint foreign key(EID)references employee(EID)on delete cascade on update cascade,
+	constraint foreign key(WID)references ward(WID)on delete cascade on update cascade
+);
+create table nurse(
+	NID varchar(10) NOT NULL,
+	EID varchar(10) NOT NULL,
+	WID varchar(10) NOT NULL,
+	constraint primary key(NID),
+	constraint foreign key(EID)references employee(EID)on delete cascade on update cascade,
+	constraint foreign key(WID)references ward(WID)on delete cascade on update cascade
+);
+create table janitor(
+	JID varchar(10) NOT NULL,
+	EID varchar(10) NOT NULL,
+	WID varchar(10) NOT NULL,
+	constraint primary key(JID),
+	constraint foreign key(EID)references employee(EID)on delete cascade on update cascade,
+	constraint foreign key(WID)references ward(WID)on delete cascade on update cascade
+);
+
+create table payment(
+	ID varchar(10) NOT NULL,
+	AID varchar(10) NOT NULL,
+	paymentDate date,
+	total decimal(11,2),
+	discount decimal(5,2),
+	billedValue decimal(11,2),
+	constraint primary key(ID),
+	constraint foreign key(AID)references addmission(AID)on delete cascade on update cascade
+);	
