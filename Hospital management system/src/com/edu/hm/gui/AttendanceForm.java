@@ -5,6 +5,19 @@
  */
 package com.edu.hm.gui;
 
+import com.edu.hm.controllers.AttendanceController;
+import com.edu.hm.controllers.EmployeeController;
+import com.edu.hm.dto.AttendanceDTO;
+import com.edu.hm.dto.EmployeeDTO;
+import static com.edu.hm.gui.AddmissionForm.setDate;
+import com.edu.hm.methods.AttendanceCheckMethods;
+import java.sql.SQLException;
+import java.util.Date;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JLabel;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author Jinadi
@@ -14,7 +27,13 @@ public class AttendanceForm extends javax.swing.JPanel {
     /**
      * Creates new form AddmissionForm
      */
+    private ClockLabel withSecondsLable = new ClockLabel("withSeconds");
+      private JLabel dateValLable;
+    private Date date = new Date();
+    private boolean isConstructorClosed = false;
+    private DefaultTableModel dtm;
     public AttendanceForm() {
+         this.dateValLable = new JLabel(setDate(date));
         initComponents();
     }
 
@@ -200,17 +219,17 @@ public class AttendanceForm extends javax.swing.JPanel {
 
         try {
             jLabel27.setVisible(false);
-            jLabel28.setVisible(false);
+           
             jLabel25.setText("");
             jLabel24.setText("");
             jLabel23.setText("");
             jLabel22.setText("");
-            Employee employee = EmployeeController.searchEmployee(jTextField1.getText());
+            EmployeeDTO employee = EmployeeController.searchEmployeeDTO(jTextField1.getText());
             if (employee != null) {
                 jLabel27.setVisible(true);
-                jLabel29.setText(employee.getFirstName() + " " + employee.getSecondName());
+                jLabel29.setText(employee.getFirstName() + " " + employee.getLastName());
                 jLabel29.setVisible(true);
-                payroll.model.Attendance attendance = AttendanceController.getEmployeeAttendance(jTextField1.getText(), dateValLable.getText());
+                AttendanceDTO attendance = AttendanceController.getEmployeeAttendance(jTextField1.getText(), dateValLable.getText());
                 String text = withSecondsLable.getText();
                 char[] time = {text.charAt(0), text.charAt(1), text.charAt(3), text.charAt(4), text.charAt(6), text.charAt(7)};
                 String timeInt = "";
@@ -222,21 +241,21 @@ public class AttendanceForm extends javax.swing.JPanel {
                     jLabel22.setText(attendance.getShortLeaveOutTime());
                     jLabel23.setText(attendance.getShortLeaveInTime());
                     jLabel24.setText(withSecondsLable.getText());
-                    int otHours = payrollMethods.getTimeHours(jLabel24.getText()) - payrollMethods.getTimeHours("170000");
-                    int outTimeMinutes = payrollMethods.getTimeMinutes(jLabel24.getText());
+                    int otHours = AttendanceCheckMethods.getTimeHours(jLabel24.getText()) - AttendanceCheckMethods.getTimeHours("170000");
+                    int outTimeMinutes = AttendanceCheckMethods.getTimeMinutes(jLabel24.getText());
                     if (outTimeMinutes > 45) {
                         otHours += 1;
                     }
-                    attendance = new payroll.model.Attendance(jTextField1.getText(), dateValLable.getText(), jLabel25.getText(), jLabel22.getText(), jLabel23.getText(), jLabel24.getText(), otHours);
+                        attendance = new AttendanceDTO(EmployeeController.searchEmployeeDTO(jTextField1.getText()), dateValLable.getText(), jLabel25.getText(), jLabel22.getText(), jLabel23.getText(), jLabel24.getText(), 0);
                     AttendanceController.updateAttendance(attendance);
                     jTextField1.setText("");
                 } else if (attendance != null && attendance.getShortLeaveOutTime().equals("") && Integer.parseInt(timeInt) < 170000) {
                     jLabel25.setText(attendance.getInTime());
                     if (AttendanceController.getShortLeaveCount(jTextField1.getText()) > 2) {
-                        payrollMethods.setHalfDay(jTextField1, dateValLable);
+                        AttendanceCheckMethods.setHalfDay(jTextField1, dateValLable);
                     } else {
                         jLabel22.setText(withSecondsLable.getText());
-                        attendance = new payroll.model.Attendance(jTextField1.getText(), dateValLable.getText(), jLabel25.getText(), jLabel22.getText(), jLabel23.getText(), jLabel24.getText(), 0);
+                        attendance = new AttendanceDTO(EmployeeController.searchEmployeeDTO(jTextField1.getText()), dateValLable.getText(), jLabel25.getText(), jLabel22.getText(), jLabel23.getText(), jLabel24.getText(), 0);
                         AttendanceController.updateAttendance(attendance);
                         jTextField1.setText("");
                     }
@@ -244,54 +263,55 @@ public class AttendanceForm extends javax.swing.JPanel {
                     jLabel25.setText(attendance.getInTime());
                     jLabel22.setText(attendance.getShortLeaveOutTime());
                     jLabel23.setText(withSecondsLable.getText());
-                    attendance = new payroll.model.Attendance(jTextField1.getText(), dateValLable.getText(), jLabel25.getText(), jLabel22.getText(), jLabel23.getText(), jLabel24.getText(), 0);
+                    attendance = new AttendanceDTO(EmployeeController.searchEmployeeDTO(jTextField1.getText()), dateValLable.getText(), jLabel25.getText(), jLabel22.getText(), jLabel23.getText(), jLabel24.getText(), 0);
                     AttendanceController.updateAttendance(attendance);
                     jTextField1.setText("");
                 } else if (attendance == null && Integer.parseInt(timeInt) > 81500 && Integer.parseInt(timeInt) < 93000) {
                     jLabel25.setText(withSecondsLable.getText());
                     jLabel22.setText("08.00.00");
                     jLabel23.setText(jLabel25.getText());
-                    attendance = new payroll.model.Attendance(jTextField1.getText(), dateValLable.getText(), jLabel25.getText(), "08.00.00", jLabel23.getText(), jLabel24.getText(), 0);
+                    attendance = new AttendanceDTO(EmployeeController.searchEmployeeDTO(jTextField1.getText()), dateValLable.getText(), jLabel25.getText(), jLabel22.getText(), jLabel23.getText(), jLabel24.getText(), 0);
                     AttendanceController.markAttendanceIn(attendance);
                     jTextField1.setText("");
                 } else if (attendance == null && Integer.parseInt(timeInt) > 93000) {
                     jLabel25.setText(withSecondsLable.getText());
-                    payrollMethods.setHalfDay(jTextField1, dateValLable);
-                    attendance = new payroll.model.Attendance(jTextField1.getText(), dateValLable.getText(), jLabel25.getText(), jLabel22.getText(), jLabel23.getText(), jLabel24.getText(), 0);
+                    AttendanceCheckMethods.setHalfDay(jTextField1, dateValLable);
+                        attendance = new AttendanceDTO(EmployeeController.searchEmployeeDTO(jTextField1.getText()), dateValLable.getText(), jLabel25.getText(), jLabel22.getText(), jLabel23.getText(), jLabel24.getText(), 0);
                     AttendanceController.markAttendanceIn(attendance);
                     jTextField1.setText("");
                 } else {
                     jLabel25.setText(withSecondsLable.getText());
-                    attendance = new payroll.model.Attendance(jTextField1.getText(), dateValLable.getText(), jLabel25.getText(), jLabel22.getText(), jLabel23.getText(), jLabel24.getText(), 0);
+                        attendance = new AttendanceDTO(EmployeeController.searchEmployeeDTO(jTextField1.getText()), dateValLable.getText(), jLabel25.getText(), jLabel22.getText(), jLabel23.getText(), jLabel24.getText(), 0);
                     AttendanceController.markAttendanceIn(attendance);
                     jTextField1.setText("");
                 }
-                payrollMethods.setTodayAttendance(dateValLable, tableTodayAttendance);
-                payrollMethods.setTodaySummary(tableTodayAttendance, jLabel16, jLabel18, jLabel19);
-                payrollMethods.checkShortLeave(dateValLable);
+                AttendanceCheckMethods.setTodayAttendance(dateValLable, tableTodayAttendance);
+                AttendanceCheckMethods.setTodaySummary(tableTodayAttendance, jLabel16, jLabel18, jLabel19);
+                AttendanceCheckMethods.checkShortLeave(dateValLable);
             } else {
-                jLabel28.setVisible(true);
+                
                 jLabel29.setVisible(false);
                 jTextField1.setText("");
             }
         } catch (ClassNotFoundException | SQLException ex) {
             ex.getStackTrace();
+        }
     }//GEN-LAST:event_jTextField1ActionPerformed
 
     private void jLabel31MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel31MouseClicked
         try {
             jLabel27.setVisible(false);
-            jLabel28.setVisible(false);
+           
             jLabel25.setText("");
             jLabel24.setText("");
             jLabel23.setText("");
             jLabel22.setText("");
-            Employee employee = EmployeeController.searchEmployee(jTextField1.getText());
+            EmployeeDTO employee = EmployeeController.searchEmployeeDTO(jTextField1.getText());
             if (employee != null) {
                 jLabel27.setVisible(true);
-                jLabel29.setText(employee.getFirstName() + " " + employee.getSecondName());
+                jLabel29.setText(employee.getFirstName() + " " + employee.getLastName());
                 jLabel29.setVisible(true);
-                payroll.model.Attendance attendance = AttendanceController.getEmployeeAttendance(jTextField1.getText(), dateValLable.getText());
+                AttendanceDTO attendance = AttendanceController.getEmployeeAttendance(jTextField1.getText(), dateValLable.getText());
                 String text = withSecondsLable.getText();
                 char[] time = {text.charAt(0), text.charAt(1), text.charAt(3), text.charAt(4), text.charAt(6), text.charAt(7)};
                 String timeInt = "";
@@ -303,21 +323,21 @@ public class AttendanceForm extends javax.swing.JPanel {
                     jLabel22.setText(attendance.getShortLeaveOutTime());
                     jLabel23.setText(attendance.getShortLeaveInTime());
                     jLabel24.setText(withSecondsLable.getText());
-                    int otHours = payrollMethods.getTimeHours(jLabel24.getText()) - payrollMethods.getTimeHours("170000");
-                    int outTimeMinutes = payrollMethods.getTimeMinutes(jLabel24.getText());
+                    int otHours = AttendanceCheckMethods.getTimeHours(jLabel24.getText()) - AttendanceCheckMethods.getTimeHours("170000");
+                    int outTimeMinutes = AttendanceCheckMethods.getTimeMinutes(jLabel24.getText());
                     if (outTimeMinutes > 45) {
                         otHours += 1;
                     }
-                    attendance = new payroll.model.Attendance(jTextField1.getText(), dateValLable.getText(), jLabel25.getText(), jLabel22.getText(), jLabel23.getText(), jLabel24.getText(), otHours);
+                        attendance = new AttendanceDTO(EmployeeController.searchEmployeeDTO(jTextField1.getText()), dateValLable.getText(), jLabel25.getText(), jLabel22.getText(), jLabel23.getText(), jLabel24.getText(), 0);
                     AttendanceController.updateAttendance(attendance);
                     jTextField1.setText("");
                 } else if (attendance != null && attendance.getShortLeaveOutTime().equals("") && Integer.parseInt(timeInt) < 170000) {
                     jLabel25.setText(attendance.getInTime());
                     if (AttendanceController.getShortLeaveCount(jTextField1.getText()) > 2) {
-                        payrollMethods.setHalfDay(jTextField1, dateValLable);
+                        AttendanceCheckMethods.setHalfDay(jTextField1, dateValLable);
                     } else {
                         jLabel22.setText(withSecondsLable.getText());
-                        attendance = new payroll.model.Attendance(jTextField1.getText(), dateValLable.getText(), jLabel25.getText(), jLabel22.getText(), jLabel23.getText(), jLabel24.getText(), 0);
+                        attendance = new AttendanceDTO(EmployeeController.searchEmployeeDTO(jTextField1.getText()), dateValLable.getText(), jLabel25.getText(), jLabel22.getText(), jLabel23.getText(), jLabel24.getText(), 0);
                         AttendanceController.updateAttendance(attendance);
                         jTextField1.setText("");
                     }
@@ -325,40 +345,40 @@ public class AttendanceForm extends javax.swing.JPanel {
                     jLabel25.setText(attendance.getInTime());
                     jLabel22.setText(attendance.getShortLeaveOutTime());
                     jLabel23.setText(withSecondsLable.getText());
-                    attendance = new payroll.model.Attendance(jTextField1.getText(), dateValLable.getText(), jLabel25.getText(), jLabel22.getText(), jLabel23.getText(), jLabel24.getText(), 0);
+                        attendance = new AttendanceDTO(EmployeeController.searchEmployeeDTO(jTextField1.getText()), dateValLable.getText(), jLabel25.getText(), jLabel22.getText(), jLabel23.getText(), jLabel24.getText(), 0);
                     AttendanceController.updateAttendance(attendance);
                     jTextField1.setText("");
                 } else if (attendance == null && Integer.parseInt(timeInt) > 81500 && Integer.parseInt(timeInt) < 93000) {
                     jLabel25.setText(withSecondsLable.getText());
                     jLabel22.setText("08.00.00");
                     jLabel23.setText(jLabel25.getText());
-                    attendance = new payroll.model.Attendance(jTextField1.getText(), dateValLable.getText(), jLabel25.getText(), "08.00.00", jLabel23.getText(), jLabel24.getText(), 0);
+                        attendance = new AttendanceDTO(EmployeeController.searchEmployeeDTO(jTextField1.getText()), dateValLable.getText(), jLabel25.getText(), jLabel22.getText(), jLabel23.getText(), jLabel24.getText(), 0);
                     AttendanceController.markAttendanceIn(attendance);
                     jTextField1.setText("");
                 } else if (attendance == null && Integer.parseInt(timeInt) > 93000) {
                     jLabel25.setText(withSecondsLable.getText());
-                    payrollMethods.setHalfDay(jTextField1, dateValLable);
-                    attendance = new payroll.model.Attendance(jTextField1.getText(), dateValLable.getText(), jLabel25.getText(), jLabel22.getText(), jLabel23.getText(), jLabel24.getText(), 0);
+                    AttendanceCheckMethods.setHalfDay(jTextField1, dateValLable);
+                    attendance = new AttendanceDTO(EmployeeController.searchEmployeeDTO(jTextField1.getText()), dateValLable.getText(), jLabel25.getText(), jLabel22.getText(), jLabel23.getText(), jLabel24.getText(), 0);
                     AttendanceController.markAttendanceIn(attendance);
                     jTextField1.setText("");
                 } else {
                     jLabel25.setText(withSecondsLable.getText());
-                    attendance = new payroll.model.Attendance(jTextField1.getText(), dateValLable.getText(), jLabel25.getText(), jLabel22.getText(), jLabel23.getText(), jLabel24.getText(), 0);
+                    attendance = new AttendanceDTO(EmployeeController.searchEmployeeDTO(jTextField1.getText()), dateValLable.getText(), jLabel25.getText(), jLabel22.getText(), jLabel23.getText(), jLabel24.getText(), 0);
                     AttendanceController.markAttendanceIn(attendance);
                     jTextField1.setText("");
                 }
-                payrollMethods.setTodayAttendance(dateValLable, tableTodayAttendance);
-                payrollMethods.setTodaySummary(tableTodayAttendance, jLabel16, jLabel18, jLabel19);
-                payrollMethods.checkShortLeave(dateValLable);
+                AttendanceCheckMethods.setTodayAttendance(dateValLable, tableTodayAttendance);
+                AttendanceCheckMethods.setTodaySummary(tableTodayAttendance, jLabel16, jLabel18, jLabel19);
+                AttendanceCheckMethods.checkShortLeave(dateValLable);
             } else {
-                jLabel28.setVisible(true);
+                
                 jLabel29.setVisible(false);
                 jTextField1.setText("");
             }
         } catch (ClassNotFoundException ex) {
-            Logger.getLogger(Attendance.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(AttendanceForm.class.getName()).log(Level.SEVERE, null, ex);
         } catch (SQLException ex) {
-            Logger.getLogger(Attendance.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(AttendanceForm.class.getName()).log(Level.SEVERE, null, ex);
 
         }
     }//GEN-LAST:event_jLabel31MouseClicked
@@ -368,12 +388,7 @@ public class AttendanceForm extends javax.swing.JPanel {
     }//GEN-LAST:event_jLabel31MouseExited
 
     private void jLabel1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel1MouseEntered
-        jLabel8.setVisible(true);
-        jLabel7.setVisible(false);
-        jLabel13.setVisible(false);
-        jLabel14.setVisible(true);
-        jLabel31.setVisible(false);
-        jLabel30.setVisible(true);
+       
     }//GEN-LAST:event_jLabel1MouseEntered
 
 
