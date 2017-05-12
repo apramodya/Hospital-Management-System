@@ -50,6 +50,10 @@ public class Main extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jLabel13 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
+        jPanel2 = new javax.swing.JPanel();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
@@ -81,10 +85,10 @@ public class Main extends javax.swing.JFrame {
 
         jPanel1.add(pnlMain, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 130, 1020, 590));
 
-        jPanel3.setBackground(new java.awt.Color(0, 0, 51));
+        jPanel3.setBackground(new java.awt.Color(0, 0, 102));
         jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        lblad1.setFont(new java.awt.Font("Segoe UI Light", 0, 24)); // NOI18N
+        lblad1.setFont(new java.awt.Font("Segoe UI Light", 0, 22)); // NOI18N
         lblad1.setForeground(new java.awt.Color(255, 255, 255));
         lblad1.setText("    admission");
         lblad1.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -98,9 +102,9 @@ public class Main extends javax.swing.JFrame {
                 lblad1MouseExited(evt);
             }
         });
-        jPanel3.add(lblad1, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 30, 160, 60));
+        jPanel3.add(lblad1, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 30, 160, 60));
 
-        jLabel7.setFont(new java.awt.Font("Segoe UI Light", 0, 24)); // NOI18N
+        jLabel7.setFont(new java.awt.Font("Segoe UI Light", 0, 22)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(255, 255, 255));
         jLabel7.setText("    patient");
         jLabel7.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -114,9 +118,9 @@ public class Main extends javax.swing.JFrame {
                 jLabel7MouseExited(evt);
             }
         });
-        jPanel3.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 30, 130, 60));
+        jPanel3.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 30, 130, 60));
 
-        jLabel8.setFont(new java.awt.Font("Segoe UI Light", 0, 24)); // NOI18N
+        jLabel8.setFont(new java.awt.Font("Segoe UI Light", 0, 22)); // NOI18N
         jLabel8.setForeground(new java.awt.Color(255, 255, 255));
         jLabel8.setText("    employee");
         jLabel8.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -130,9 +134,9 @@ public class Main extends javax.swing.JFrame {
                 jLabel8MouseExited(evt);
             }
         });
-        jPanel3.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 20, 160, 80));
+        jPanel3.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 20, 160, 80));
 
-        jLabel9.setFont(new java.awt.Font("Segoe UI Light", 0, 24)); // NOI18N
+        jLabel9.setFont(new java.awt.Font("Segoe UI Light", 0, 22)); // NOI18N
         jLabel9.setForeground(new java.awt.Color(255, 255, 255));
         jLabel9.setText("    ward");
         jLabel9.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -146,9 +150,9 @@ public class Main extends javax.swing.JFrame {
                 jLabel9MouseExited(evt);
             }
         });
-        jPanel3.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 20, 120, 80));
+        jPanel3.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 20, 120, 80));
 
-        lblad.setFont(new java.awt.Font("Segoe UI Light", 0, 24)); // NOI18N
+        lblad.setFont(new java.awt.Font("Segoe UI Light", 0, 22)); // NOI18N
         lblad.setForeground(new java.awt.Color(255, 255, 255));
         lblad.setText("    test");
         lblad.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -162,7 +166,7 @@ public class Main extends javax.swing.JFrame {
                 lbladMouseExited(evt);
             }
         });
-        jPanel3.add(lblad, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 30, 160, 60));
+        jPanel3.add(lblad, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 30, 100, 60));
 
         jPanel5.setOpaque(false);
 
@@ -177,7 +181,7 @@ public class Main extends javax.swing.JFrame {
             .addGap(0, 120, Short.MAX_VALUE)
         );
 
-        jPanel3.add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 0, 170, 120));
+        jPanel3.add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(840, 0, 170, 120));
 
         jLabel4.setFont(new java.awt.Font("Segoe UI Light", 0, 30)); // NOI18N
         jLabel4.setText("X");
@@ -198,7 +202,7 @@ public class Main extends javax.swing.JFrame {
         jPanel3.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(1140, -10, 30, 60));
 
         jLabel1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(204, 204, 204)));
-        jPanel3.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(84, 10, 620, 100));
+        jPanel3.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 10, 620, 100));
 
         jLabel13.setFont(new java.awt.Font("Raleway Light", 1, 24)); // NOI18N
         jLabel13.setForeground(new java.awt.Color(255, 255, 255));
@@ -227,6 +231,28 @@ public class Main extends javax.swing.JFrame {
             }
         });
         jPanel3.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(1050, 10, 20, -1));
+
+        jPanel2.setBackground(new java.awt.Color(0, 0, 102));
+        jPanel2.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel3.setBackground(new java.awt.Color(204, 204, 204));
+        jLabel3.setFont(new java.awt.Font("Segoe UI Light", 0, 18)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(153, 153, 153));
+        jLabel3.setText("management system");
+        jPanel2.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 60, 170, 30));
+
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/edu/hm/img/hospital (1).png"))); // NOI18N
+        jLabel2.setText("jLabel2");
+        jPanel2.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 70, -1));
+
+        jLabel6.setBackground(new java.awt.Color(204, 204, 204));
+        jLabel6.setFont(new java.awt.Font("Segoe UI Light", 0, 24)); // NOI18N
+        jLabel6.setForeground(new java.awt.Color(153, 153, 153));
+        jLabel6.setText("hospital");
+        jPanel2.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 40, 100, 30));
+
+        jPanel3.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, 160, 100));
 
         jPanel1.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1170, 120));
 
@@ -390,12 +416,16 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel13;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel5;
     private javax.swing.JLabel lblad;
