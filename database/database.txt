@@ -105,3 +105,20 @@ create table payment(
 	constraint primary key(ID),
 	constraint foreign key(AID)references addmission(AID)on delete cascade on update cascade
 );	
+create table attendance(
+	EID varchar(10) NOT NULL,
+	date varchar(20),
+	inTime varchar(10),
+	outTime varchar(10),
+	shortLeaveOutTime varchar(10),
+	shortLeaveInTime varchar(10),
+	otHours int(10),
+	constraint foreign key(EID)references employee(EID)on delete cascade on update cascade
+);
+create table leaves(
+	EID varchar(10) NOT NULL,
+	leaveDate varchar(10),
+	noOfDays int(10),
+	leaveType varchar(20),
+	constraint foreign key(EID)references employee(EID)on delete cascade on update cascade
+	);
