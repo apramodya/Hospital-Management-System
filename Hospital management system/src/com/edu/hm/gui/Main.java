@@ -18,9 +18,13 @@ public class Main extends javax.swing.JFrame {
     /**
      * Creates new form Main
      */
+    private int xMouse;
+    private int yMouse;
+
     public Main() {
         initComponents();
         startOn();
+        setLocationRelativeTo(null);
     }
 
     /**
@@ -34,7 +38,6 @@ public class Main extends javax.swing.JFrame {
 
         jPanel1 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         lblad = new javax.swing.JLabel();
@@ -42,6 +45,7 @@ public class Main extends javax.swing.JFrame {
         jLabel8 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
         lblad1 = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         pnlMain = new javax.swing.JPanel();
@@ -49,27 +53,30 @@ public class Main extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
+        setPreferredSize(new java.awt.Dimension(1220, 720));
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setMinimumSize(new java.awt.Dimension(1366, 768));
+        jPanel1.setPreferredSize(new java.awt.Dimension(1220, 720));
+        jPanel1.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseDragged(java.awt.event.MouseEvent evt) {
+                jPanel1MouseDragged(evt);
+            }
+        });
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel2.setBackground(new java.awt.Color(0, 0, 51));
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/edu/hm/img/emblem.png"))); // NOI18N
-        jLabel1.setText("jLabel1");
-        jPanel2.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 130, 130));
-
         jLabel2.setFont(new java.awt.Font("Segoe UI Light", 0, 24)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("hospital");
-        jPanel2.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 100, 90, 30));
+        jPanel2.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 100, 90, 30));
 
-        jLabel3.setFont(new java.awt.Font("Segoe UI Light", 0, 28)); // NOI18N
+        jLabel3.setFont(new java.awt.Font("Segoe UI Light", 1, 20)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(204, 204, 204));
         jLabel3.setText("management system");
-        jPanel2.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 130, 260, -1));
+        jPanel2.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 130, 220, -1));
 
         lblad.setFont(new java.awt.Font("Segoe UI Light", 0, 24)); // NOI18N
         lblad.setForeground(new java.awt.Color(255, 255, 255));
@@ -82,7 +89,7 @@ public class Main extends javax.swing.JFrame {
                 lbladMouseExited(evt);
             }
         });
-        jPanel2.add(lblad, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 590, 280, 60));
+        jPanel2.add(lblad, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 590, 230, 60));
 
         jLabel7.setFont(new java.awt.Font("Segoe UI Light", 0, 24)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(255, 255, 255));
@@ -98,7 +105,7 @@ public class Main extends javax.swing.JFrame {
                 jLabel7MouseExited(evt);
             }
         });
-        jPanel2.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 360, 280, 60));
+        jPanel2.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 360, 220, 60));
 
         jLabel8.setFont(new java.awt.Font("Segoe UI Light", 0, 24)); // NOI18N
         jLabel8.setForeground(new java.awt.Color(255, 255, 255));
@@ -114,7 +121,7 @@ public class Main extends javax.swing.JFrame {
                 jLabel8MouseExited(evt);
             }
         });
-        jPanel2.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 440, 280, 60));
+        jPanel2.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 440, 240, 60));
 
         jLabel9.setFont(new java.awt.Font("Segoe UI Light", 0, 24)); // NOI18N
         jLabel9.setForeground(new java.awt.Color(255, 255, 255));
@@ -130,7 +137,7 @@ public class Main extends javax.swing.JFrame {
                 jLabel9MouseExited(evt);
             }
         });
-        jPanel2.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 520, 280, 60));
+        jPanel2.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 520, 220, 60));
 
         lblad1.setFont(new java.awt.Font("Segoe UI Light", 0, 24)); // NOI18N
         lblad1.setForeground(new java.awt.Color(255, 255, 255));
@@ -146,9 +153,12 @@ public class Main extends javax.swing.JFrame {
                 lblad1MouseExited(evt);
             }
         });
-        jPanel2.add(lblad1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 300, 280, 60));
+        jPanel2.add(lblad1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 300, 230, 60));
 
-        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 280, 768));
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/edu/hm/img/emblem.png"))); // NOI18N
+        jPanel2.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 120, 120));
+
+        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -2, 200, 770));
 
         jLabel4.setFont(new java.awt.Font("Segoe UI Light", 0, 30)); // NOI18N
         jLabel4.setText("X");
@@ -157,11 +167,11 @@ public class Main extends javax.swing.JFrame {
                 jLabel4MouseClicked(evt);
             }
         });
-        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(1330, 10, -1, 40));
+        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(1180, 10, -1, 40));
 
         jLabel5.setFont(new java.awt.Font("Segoe UI Semibold", 1, 40)); // NOI18N
         jLabel5.setText("_");
-        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(1290, -20, 30, 60));
+        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(1140, -10, 30, 60));
 
         pnlMain.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -169,14 +179,14 @@ public class Main extends javax.swing.JFrame {
         pnlMain.setLayout(pnlMainLayout);
         pnlMainLayout.setHorizontalGroup(
             pnlMainLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1070, Short.MAX_VALUE)
+            .addGap(0, 1020, Short.MAX_VALUE)
         );
         pnlMainLayout.setVerticalGroup(
             pnlMainLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 590, Short.MAX_VALUE)
         );
 
-        jPanel1.add(pnlMain, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 120, 1070, 590));
+        jPanel1.add(pnlMain, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 120, 1020, 590));
 
         jPanel5.setOpaque(false);
 
@@ -191,15 +201,13 @@ public class Main extends javax.swing.JFrame {
             .addGap(0, 130, Short.MAX_VALUE)
         );
 
-        jPanel1.add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(1080, 0, 180, 130));
+        jPanel1.add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(940, 0, 180, 130));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 1366, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -247,7 +255,7 @@ public class Main extends javax.swing.JFrame {
     }//GEN-LAST:event_jLabel9MouseExited
 
     private void jLabel7MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel7MouseClicked
-                                       
+
         pnlMain.removeAll();
         PatientReportForm form = new PatientReportForm();
         form.setSize(pnlMain.getSize());
@@ -276,11 +284,11 @@ public class Main extends javax.swing.JFrame {
     }//GEN-LAST:event_jLabel8MouseClicked
 
     private void lblad1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblad1MouseEntered
-         lblad1.setFont(new Font("Segoe UI Light", 0, 30));
+        lblad1.setFont(new Font("Segoe UI Light", 0, 30));
     }//GEN-LAST:event_lblad1MouseEntered
 
     private void lblad1MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblad1MouseExited
-          lblad1.setFont(new Font("Segoe UI Light", 0, 24));
+        lblad1.setFont(new Font("Segoe UI Light", 0, 24));
     }//GEN-LAST:event_lblad1MouseExited
 
     private void lblad1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblad1MouseClicked
@@ -291,6 +299,12 @@ public class Main extends javax.swing.JFrame {
         pnlMain.repaint();
         pnlMain.revalidate();
     }//GEN-LAST:event_lblad1MouseClicked
+
+    private void jPanel1MouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel1MouseDragged
+        int x = evt.getXOnScreen();
+        int y = evt.getYOnScreen();
+        this.setLocation(x - xMouse, y - yMouse);
+    }//GEN-LAST:event_jPanel1MouseDragged
 
     /**
      * @param args the command line arguments
