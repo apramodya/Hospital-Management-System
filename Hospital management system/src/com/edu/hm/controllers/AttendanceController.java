@@ -27,14 +27,14 @@ public class AttendanceController{
     }
     
     public static void updateAttendance(AttendanceDTO attendance) throws ClassNotFoundException, SQLException{
-        String sql="Update attendance set outTime='"+attendance.getOutTime()+"',shortLeaveOutTime='"+attendance.getShortLeaveOutTime()+"',shortLeaveInTime='"+attendance.getShortLeaveInTime()+"',otHours='"+attendance.getOtHours()+"' where employeeId='"+attendance.getEmployeeDTO().getEid()+"'";
+        String sql="Update attendance set outTime='"+attendance.getOutTime()+"',shortLeaveOutTime='"+attendance.getShortLeaveOutTime()+"',shortLeaveInTime='"+attendance.getShortLeaveInTime()+"',otHours='"+attendance.getOtHours()+"' where EID='"+attendance.getEmployeeDTO().getEid()+"'";
         Connection conn=DBConnection.getDBConnection().getConnection();
         Statement stm=conn.createStatement();
         stm.executeUpdate(sql);
     }
     
     public static AttendanceDTO getEmployeeAttendance(String employeeId,String date) throws ClassNotFoundException, SQLException{
-        String sql="Select * from attendance where date='"+date+"' && employeeId='"+employeeId+"'";        
+        String sql="Select * from attendance where date='"+date+"' && EID='"+employeeId+"'";        
         Connection conn=DBConnection.getDBConnection().getConnection();
         Statement stm=conn.createStatement();
         ResultSet rst = stm.executeQuery(sql);
@@ -113,7 +113,7 @@ public class AttendanceController{
     }
     
     public static int getAbsenties() throws ClassNotFoundException, SQLException{
-        String sql="Select (COUNT(employeeId) - (Select COUNT(employeeId) from Attendance where date=curdate())) as absenties from Employee";
+        String sql="Select (COUNT(EID) - (Select COUNT(EID) from Attendance where date=curdate())) as absenties from Employee";
         Connection conn=DBConnection.getDBConnection().getConnection();
         Statement stm=conn.createStatement();
         ResultSet rst = stm.executeQuery(sql);
@@ -125,7 +125,7 @@ public class AttendanceController{
     }
     
     public static int getNormalOt(String employeeId) throws ClassNotFoundException, SQLException{
-        String sql="Select SUM(otHours) as totalNormalOt from Attendance where MONTH(date)=MONTH(curdate()) && employeeId='"+employeeId+"' && (DAYNAME(date)!='Saturday' || DAYNAME(date)!='Sunday')";
+        String sql="Select SUM(otHours) as totalNormalOt from Attendance where MONTH(date)=MONTH(curdate()) && EID='"+employeeId+"' && (DAYNAME(date)!='Saturday' || DAYNAME(date)!='Sunday')";
         Connection conn=DBConnection.getDBConnection().getConnection();
         Statement stm=conn.createStatement();
         ResultSet rst = stm.executeQuery(sql);
@@ -137,7 +137,7 @@ public class AttendanceController{
     }
     
     public static int getWeekendOt(String employeeId) throws ClassNotFoundException, SQLException{
-        String sql="Select SUM(otHours) as totalWeekendOt from Attendance where MONTH(date)=MONTH(curdate()) && employeeId='"+employeeId+"' && (DAYNAME(date)='Saturday' || DAYNAME(Date)='Sunday')";
+        String sql="Select SUM(otHours) as totalWeekendOt from Attendance where MONTH(date)=MONTH(curdate()) && EID='"+employeeId+"' && (DAYNAME(date)='Saturday' || DAYNAME(Date)='Sunday')";
         Connection conn=DBConnection.getDBConnection().getConnection();
         Statement stm=conn.createStatement();
         ResultSet rst = stm.executeQuery(sql);
@@ -149,7 +149,7 @@ public class AttendanceController{
     }
     
     public static int getShortLeaveCount(String employeeId) throws ClassNotFoundException, SQLException{
-        String sql="Select COUNT(shortLeaveInTime) as shortLeaveCount from Attendance where employeeId='"+employeeId+"' && MONTH(date)=MONTH(curdate())";
+        String sql="Select COUNT(shortLeaveInTime) as shortLeaveCount from Attendance where EID='"+employeeId+"' && MONTH(date)=MONTH(curdate())";
         Connection conn=DBConnection.getDBConnection().getConnection();
         Statement stm=conn.createStatement();
         ResultSet rst = stm.executeQuery(sql);

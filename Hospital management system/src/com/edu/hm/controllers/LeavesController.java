@@ -33,7 +33,7 @@ public class LeavesController {
     }
 
     public static int getLeaveCount(String employeeId, String leaveType) throws ClassNotFoundException, SQLException {
-        String sql ="Select SUM(noOfDays) as leaveCount from leaves where employeeId='"+employeeId+"' && YEAR(leaveDate)=YEAR(curdate()) && leaveType='"+leaveType+"'";
+        String sql ="Select SUM(noOfDays) as leaveCount from leaves where EID='"+employeeId+"' && YEAR(leaveDate)=YEAR(curdate()) && leaveType='"+leaveType+"'";
         Connection conn=DBConnection.getDBConnection().getConnection();
         Statement stm=conn.createStatement();
         ResultSet rst = stm.executeQuery(sql);
@@ -45,7 +45,7 @@ public class LeavesController {
     }
     
     public static ArrayList<LeavesDTO> getAllEmployeeLeaves(String employeeId) throws ClassNotFoundException, SQLException{
-        String sql="Select * from leaves where employeeId='"+employeeId+"' && YEAR(leaveDate)=YEAR(curdate())";
+        String sql="Select * from leaves where EID='"+employeeId+"' && YEAR(leaveDate)=YEAR(curdate())";
         Connection conn=DBConnection.getDBConnection().getConnection();
         Statement stm=conn.createStatement();
         ResultSet rst = stm.executeQuery(sql);
@@ -57,7 +57,7 @@ public class LeavesController {
     }
     
     public static int getMonthlyLeaveCount(String employeeId,String leaveType) throws ClassNotFoundException, SQLException{
-        String sql="Select SUM(noOfDays) as leaveCount from leaves where employeeId='"+employeeId+"' && MONTH(Date)=MONTH(curdate()) && leaveType='"+leaveType+"'";
+        String sql="Select SUM(noOfDays) as leaveCount from leaves where EID='"+employeeId+"' && MONTH(Date)=MONTH(curdate()) && leaveType='"+leaveType+"'";
         Connection conn=DBConnection.getDBConnection().getConnection();
         Statement stm=conn.createStatement();
         ResultSet rst = stm.executeQuery(sql);
@@ -69,7 +69,7 @@ public class LeavesController {
     }
     
     public static int getMonthlyAllLeaveCount(String employeeId) throws ClassNotFoundException, SQLException{
-        String sql="Select SUM(noOfDays) as leaveCount from leaves where employeeId='"+employeeId+"' && MONTH(leaveDate)=MONTH(curdate())";
+        String sql="Select SUM(noOfDays) as leaveCount from leaves where EID='"+employeeId+"' && MONTH(leaveDate)=MONTH(curdate())";
         Connection conn=DBConnection.getDBConnection().getConnection();
         Statement stm=conn.createStatement();
         ResultSet rst = stm.executeQuery(sql);
