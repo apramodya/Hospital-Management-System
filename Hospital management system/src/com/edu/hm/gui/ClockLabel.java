@@ -25,27 +25,27 @@ class ClockLabel extends JLabel implements ActionListener {
 
     public ClockLabel(String type) {
         this.type = type;
-        setForeground(Color.BLACK);
+        setForeground(Color.WHITE);
 
         switch (type) {
             case "date":
                 sdf = new SimpleDateFormat("  MMMM dd yyyy");
-                setFont(new Font("Segoe UI Light", Font.PLAIN, 24));
+                setFont(new Font("Segoe UI Light", Font.PLAIN, 23));
                 setHorizontalAlignment(SwingConstants.LEFT);
                 break;
             case "time":
                 sdf = new SimpleDateFormat("hh:mm a");
-                setFont(new Font("Segoe UI Light", Font.PLAIN, 30));
+                setFont(new Font("Segoe UI Light", Font.PLAIN, 28));
                 setHorizontalAlignment(SwingConstants.CENTER);
                 break;
             case "day":
                 sdf = new SimpleDateFormat("EEEE  ");
-                setFont(new Font("Segoe UI Light", 1, 22));
+                setFont(new Font("Segoe UI Light", 1, 21));
                 setHorizontalAlignment(SwingConstants.RIGHT);
                 break;
             case "withSeconds":
                 sdf=new SimpleDateFormat("HH:mm:ss");
-                setFont(new Font("Segoe UI Light",1,18));
+                setFont(new Font("Segoe UI Light",1,17));
                 setHorizontalAlignment(SwingConstants.CENTER);
                 break;
             default:

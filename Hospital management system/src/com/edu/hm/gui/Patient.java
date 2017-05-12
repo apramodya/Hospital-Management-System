@@ -193,7 +193,7 @@ public class Patient extends javax.swing.JPanel {
         jLabel10.setText("patient ID");
         jPanel2.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 12, 217, 60));
 
-        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 80, 560, 440));
+        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 30, 560, 440));
 
         jButton3.setBackground(new java.awt.Color(255, 0, 0));
         jButton3.setFont(new java.awt.Font("Segoe UI Semilight", 0, 24)); // NOI18N
@@ -205,7 +205,7 @@ public class Patient extends javax.swing.JPanel {
                 jButton3ActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 500, 190, 60));
+        jPanel1.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 470, 190, 60));
 
         jButton4.setBackground(new java.awt.Color(0, 255, 0));
         jButton4.setFont(new java.awt.Font("Segoe UI Semilight", 0, 24)); // NOI18N
@@ -217,7 +217,7 @@ public class Patient extends javax.swing.JPanel {
                 jButton4ActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(780, 500, 190, 60));
+        jPanel1.add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(810, 470, 190, 60));
 
         jPanel3.setBackground(new java.awt.Color(255, 255, 255));
         jPanel3.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 51)));
@@ -305,9 +305,9 @@ public class Patient extends javax.swing.JPanel {
         });
         jPanel3.add(cmbWardTy, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 130, 220, 30));
 
-        jPanel1.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 100, 440, 380));
+        jPanel1.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 70, 440, 380));
 
-        add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, 610));
+        add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1040, 610));
 
         getAccessibleContext().setAccessibleName("");
     }// </editor-fold>//GEN-END:initComponents
