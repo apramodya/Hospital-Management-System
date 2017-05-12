@@ -6,14 +6,20 @@
 package com.edu.hm.gui;
 
 import com.edu.hm.controllers.EmployeeController;
+import com.edu.hm.controllers.LeavesController;
 import com.edu.hm.dto.EmployeeDTO;
+import com.edu.hm.dto.LeavesDTO;
 import java.awt.Color;
 import java.awt.Font;
 import java.sql.SQLException;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.border.LineBorder;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -24,8 +30,17 @@ public class AddmissionForm extends javax.swing.JPanel {
     /**
      * Creates new form AddmissionForm
      */
+    private Date date = new Date();
+
     public AddmissionForm() {
         initComponents();
+
+    }
+
+    public static String setDate(Date date) {
+        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+        String newDate = dateFormat.format(date);
+        return newDate;
     }
 
     /**
@@ -260,10 +275,9 @@ public class AddmissionForm extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
-        dateValLable.setText(setDate(date));
+
         try {
             EmployeeDTO employee = EmployeeController.searchEmployeeDTO(jTextField1.getText());
-            jTextField2.setText(dateValLable.getText().substring(0));
             if (employee != null) {
                 setEmployeeLeaves();
                 jLabel25.setText(employee.getFirstName() + " " + employee.getLastName());
@@ -271,7 +285,7 @@ public class AddmissionForm extends javax.swing.JPanel {
                 JOptionPane.showMessageDialog(this, "Employee not found");
             }
         } catch (SQLException ex) {
-            Logger.getLogger(GetLeave.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(AddmissionForm.class.getName()).log(Level.SEVERE, null, ex);
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(AddmissionForm.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -279,9 +293,9 @@ public class AddmissionForm extends javax.swing.JPanel {
 
     private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
         try {
-           
+
             int selectedIndex = jComboBox1.getSelectedIndex();
-            int maximumLeaves=0;
+            int maximumLeaves = 0;
             jTextField3.setEditable(true);
             jTextField3.setText("");
             if (selectedIndex == 0) {
@@ -301,7 +315,7 @@ public class AddmissionForm extends javax.swing.JPanel {
             int leaveCount = LeavesController.getLeaveCount(jTextField1.getText(), (String) jComboBox1.getSelectedItem());
             jLabel27.setText(Integer.toString(Integer.parseInt(jLabel26.getText()) - leaveCount));
         } catch (ClassNotFoundException | SQLException ex) {
-            Logger.getLogger(GetLeave.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(AddmissionForm.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_jComboBox1ActionPerformed
 
@@ -321,29 +335,33 @@ public class AddmissionForm extends javax.swing.JPanel {
     }//GEN-LAST:event_jTextField3ActionPerformed
 
     private void jLabel21MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel21MouseClicked
-        int noOfDays = 0;
-        String temp=jTextField3.getText();
-        if (!"".equals(temp)) {
-            if ("Half Day".equals(jComboBox1.getSelectedItem().toString())) {
-                noOfDays = Integer.parseInt(jTextField3.getText()) / 2;
+        try {                                      
+            int noOfDays = 0;
+            String temp = jTextField3.getText();
+            if (!"".equals(temp)) {
+                if ("Half Day".equals(jComboBox1.getSelectedItem().toString())) {
+                    noOfDays = Integer.parseInt(jTextField3.getText()) / 2;
+                } else {
+                    noOfDays = Integer.parseInt(jTextField3.getText());
+                }
             } else {
-                noOfDays = Integer.parseInt(jTextField3.getText());
+                JOptionPane.showMessageDialog(this, "Input Number of Days");
             }
-        }else{
-            JOptionPane.showMessageDialog(this, "Input Number of Days");
-        }
-        Leaves leave = new Leaves(jTextField1.getText(), setDate(date), noOfDays, (String) jComboBox1.getSelectedItem());
-        try {
-            boolean res = LeavesController.addLeave(leave);
-            if (res == true) {
-                JOptionPane.showMessageDialog(this, "Leave Confirmed");
-                int leaveCount = LeavesController.getLeaveCount(jTextField1.getText(), (String) jComboBox1.getSelectedItem());
-                int remainingLeaves = Integer.parseInt(jLabel26.getText()) - leaveCount;
-                jLabel27.setText(Integer.toString(remainingLeaves));
-                setEmployeeLeaves();
+            LeavesDTO leave = new LeavesDTO( EmployeeController.searchEmployeeDTO(jTextField1.getText()), setDate(date), noOfDays, (String) jComboBox1.getSelectedItem());
+            try {
+                boolean res = LeavesController.addLeave(leave);
+                if (res == true) {
+                    JOptionPane.showMessageDialog(this, "Leave Confirmed");
+                    int leaveCount = LeavesController.getLeaveCount(jTextField1.getText(), (String) jComboBox1.getSelectedItem());
+                    int remainingLeaves = Integer.parseInt(jLabel26.getText()) - leaveCount;
+                    jLabel27.setText(Integer.toString(remainingLeaves));
+                    setEmployeeLeaves();
+                }
+            } catch (ClassNotFoundException | SQLException ex) {
+                Logger.getLogger(AddmissionForm.class.getName()).log(Level.SEVERE, null, ex);
             }
-        } catch (ClassNotFoundException | SQLException ex) {
-            Logger.getLogger(GetLeave.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (SQLException | ClassNotFoundException ex) {
+            Logger.getLogger(AddmissionForm.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_jLabel21MouseClicked
 
@@ -356,7 +374,7 @@ public class AddmissionForm extends javax.swing.JPanel {
     }//GEN-LAST:event_jLabel21MouseExited
 
     private void jLabel20MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel20MouseClicked
-       
+
     }//GEN-LAST:event_jLabel20MouseClicked
 
     private void jLabel20MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel20MouseEntered
@@ -390,4 +408,17 @@ public class AddmissionForm extends javax.swing.JPanel {
     private javax.swing.JTextField jTextField2;
     private javax.swing.JTextField jTextField3;
     // End of variables declaration//GEN-END:variables
+
+    private void setEmployeeLeaves() {
+        try {
+            ArrayList<LeavesDTO> allEmployeeLeaves = LeavesController.getAllEmployeeLeaves(jTextField1.getText());
+            DefaultTableModel dtm = (DefaultTableModel) jTable1.getModel();
+            dtm.setRowCount(0);
+            for (LeavesDTO leave : allEmployeeLeaves) {
+                Object[] rawData = {leave.getLeaveDate(), leave.getLeaveType(), leave.getNoOfDays()};
+                dtm.addRow(rawData);
+            }
+        } catch (ClassNotFoundException | SQLException ex) {
+        }
+    }
 }
