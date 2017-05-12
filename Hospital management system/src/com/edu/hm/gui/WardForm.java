@@ -11,6 +11,7 @@ import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import com.edu.hm.controllers.WardController;
 import com.edu.hm.dto.WardDTO;
+import com.edu.hm.validation.ValidationController;
 
 /**
  *
@@ -64,6 +65,11 @@ public class WardForm extends javax.swing.JPanel {
         jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 280, 155, 58));
 
         txtWardType.setFont(new java.awt.Font("Segoe UI Semilight", 0, 24)); // NOI18N
+        txtWardType.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtWardTypeKeyReleased(evt);
+            }
+        });
         jPanel1.add(txtWardType, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 180, 330, 58));
 
         txtWid.setFont(new java.awt.Font("Segoe UI Semilight", 0, 24)); // NOI18N
@@ -100,6 +106,10 @@ public class WardForm extends javax.swing.JPanel {
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
        addWard();
     }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void txtWardTypeKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtWardTypeKeyReleased
+       ValidationController.name(txtWardType);
+    }//GEN-LAST:event_txtWardTypeKeyReleased
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
