@@ -39,21 +39,21 @@ public class Main extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         pnlMain = new javax.swing.JPanel();
         jPanel3 = new javax.swing.JPanel();
-        lblad1 = new javax.swing.JLabel();
-        jLabel7 = new javax.swing.JLabel();
-        jLabel8 = new javax.swing.JLabel();
-        jLabel9 = new javax.swing.JLabel();
-        lblad = new javax.swing.JLabel();
         jPanel5 = new javax.swing.JPanel();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
-        jLabel1 = new javax.swing.JLabel();
         jLabel13 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
+        panelQuickLink = new javax.swing.JPanel();
+        lblad1 = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
+        jLabel8 = new javax.swing.JLabel();
+        jLabel9 = new javax.swing.JLabel();
+        lblad = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
@@ -88,86 +88,6 @@ public class Main extends javax.swing.JFrame {
         jPanel3.setBackground(new java.awt.Color(0, 0, 102));
         jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        lblad1.setFont(new java.awt.Font("Segoe UI Light", 0, 22)); // NOI18N
-        lblad1.setForeground(new java.awt.Color(255, 255, 255));
-        lblad1.setText("    admission");
-        lblad1.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                lblad1MouseClicked(evt);
-            }
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                lblad1MouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                lblad1MouseExited(evt);
-            }
-        });
-        jPanel3.add(lblad1, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 30, 160, 60));
-
-        jLabel7.setFont(new java.awt.Font("Segoe UI Light", 0, 22)); // NOI18N
-        jLabel7.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel7.setText("    patient");
-        jLabel7.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLabel7MouseClicked(evt);
-            }
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                jLabel7MouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                jLabel7MouseExited(evt);
-            }
-        });
-        jPanel3.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 30, 130, 60));
-
-        jLabel8.setFont(new java.awt.Font("Segoe UI Light", 0, 22)); // NOI18N
-        jLabel8.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel8.setText("    employee");
-        jLabel8.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLabel8MouseClicked(evt);
-            }
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                jLabel8MouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                jLabel8MouseExited(evt);
-            }
-        });
-        jPanel3.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 20, 160, 80));
-
-        jLabel9.setFont(new java.awt.Font("Segoe UI Light", 0, 22)); // NOI18N
-        jLabel9.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel9.setText("    ward");
-        jLabel9.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLabel9MouseClicked(evt);
-            }
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                jLabel9MouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                jLabel9MouseExited(evt);
-            }
-        });
-        jPanel3.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 20, 120, 80));
-
-        lblad.setFont(new java.awt.Font("Segoe UI Light", 0, 22)); // NOI18N
-        lblad.setForeground(new java.awt.Color(255, 255, 255));
-        lblad.setText("    test");
-        lblad.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                lbladMouseClicked(evt);
-            }
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                lbladMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                lbladMouseExited(evt);
-            }
-        });
-        jPanel3.add(lblad, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 30, 100, 60));
-
         jPanel5.setOpaque(false);
 
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
@@ -200,9 +120,6 @@ public class Main extends javax.swing.JFrame {
             }
         });
         jPanel3.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(1140, -10, 30, 60));
-
-        jLabel1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(204, 204, 204)));
-        jPanel3.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 10, 620, 100));
 
         jLabel13.setFont(new java.awt.Font("Raleway Light", 1, 24)); // NOI18N
         jLabel13.setForeground(new java.awt.Color(255, 255, 255));
@@ -259,6 +176,124 @@ public class Main extends javax.swing.JFrame {
         jPanel2.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 40, 100, 30));
 
         jPanel3.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, 160, 100));
+
+        panelQuickLink.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255)));
+        panelQuickLink.setOpaque(false);
+
+        lblad1.setFont(new java.awt.Font("Segoe UI Light", 0, 22)); // NOI18N
+        lblad1.setForeground(new java.awt.Color(255, 255, 255));
+        lblad1.setText("    admission");
+        lblad1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lblad1MouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                lblad1MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                lblad1MouseExited(evt);
+            }
+        });
+
+        jLabel7.setFont(new java.awt.Font("Segoe UI Light", 0, 22)); // NOI18N
+        jLabel7.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel7.setText("    patient");
+        jLabel7.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel7MouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jLabel7MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jLabel7MouseExited(evt);
+            }
+        });
+
+        jLabel8.setFont(new java.awt.Font("Segoe UI Light", 0, 22)); // NOI18N
+        jLabel8.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel8.setText("    employee");
+        jLabel8.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel8MouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jLabel8MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jLabel8MouseExited(evt);
+            }
+        });
+
+        jLabel9.setFont(new java.awt.Font("Segoe UI Light", 0, 22)); // NOI18N
+        jLabel9.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel9.setText("    ward");
+        jLabel9.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel9MouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jLabel9MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jLabel9MouseExited(evt);
+            }
+        });
+
+        lblad.setFont(new java.awt.Font("Segoe UI Light", 0, 22)); // NOI18N
+        lblad.setForeground(new java.awt.Color(255, 255, 255));
+        lblad.setText("    test");
+        lblad.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lbladMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                lbladMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                lbladMouseExited(evt);
+            }
+        });
+
+        javax.swing.GroupLayout panelQuickLinkLayout = new javax.swing.GroupLayout(panelQuickLink);
+        panelQuickLink.setLayout(panelQuickLinkLayout);
+        panelQuickLinkLayout.setHorizontalGroup(
+            panelQuickLinkLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelQuickLinkLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(panelQuickLinkLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(panelQuickLinkLayout.createSequentialGroup()
+                        .addGap(150, 150, 150)
+                        .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(lblad1, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(panelQuickLinkLayout.createSequentialGroup()
+                        .addGap(250, 250, 250)
+                        .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(lblad, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(16, Short.MAX_VALUE))
+        );
+        panelQuickLinkLayout.setVerticalGroup(
+            panelQuickLinkLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelQuickLinkLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(panelQuickLinkLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(panelQuickLinkLayout.createSequentialGroup()
+                        .addGap(10, 10, 10)
+                        .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(panelQuickLinkLayout.createSequentialGroup()
+                        .addGap(10, 10, 10)
+                        .addComponent(lblad1, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(panelQuickLinkLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(lblad, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap())
+        );
+
+        jPanel3.add(panelQuickLink, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 10, 670, 100));
 
         jPanel1.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1170, 120));
 
@@ -364,11 +399,11 @@ public class Main extends javax.swing.JFrame {
     }//GEN-LAST:event_jPanel1MouseDragged
 
     private void jLabel5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel5MouseClicked
-           setState(ICONIFIED);
+        setState(ICONIFIED);
     }//GEN-LAST:event_jLabel5MouseClicked
 
     private void lbladMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lbladMouseClicked
-      
+
     }//GEN-LAST:event_lbladMouseClicked
 
     private void jLabel13MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel13MouseClicked
@@ -390,6 +425,7 @@ public class Main extends javax.swing.JFrame {
         pnlMain.add(form);
         pnlMain.repaint();
         pnlMain.revalidate();
+        panelQuickLink.setVisible(false);
     }//GEN-LAST:event_jPanel2MouseClicked
 
     /**
@@ -428,7 +464,6 @@ public class Main extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel2;
@@ -445,6 +480,7 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel5;
     private javax.swing.JLabel lblad;
     private javax.swing.JLabel lblad1;
+    public static javax.swing.JPanel panelQuickLink;
     public static javax.swing.JPanel pnlMain;
     // End of variables declaration//GEN-END:variables
 
@@ -456,5 +492,12 @@ public class Main extends javax.swing.JFrame {
         jPanel5.add(c1);
         jPanel5.add(c2);
         jPanel5.add(c3);
+        pnlMain.removeAll();
+        MainFrame form = new MainFrame();
+        form.setSize(pnlMain.getSize());
+        pnlMain.add(form);
+        pnlMain.repaint();
+        pnlMain.revalidate();
+        panelQuickLink.setVisible(false);
     }
 }

@@ -69,18 +69,33 @@ public class MainFrame extends javax.swing.JPanel {
         jButton3.setForeground(new java.awt.Color(255, 255, 255));
         jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/edu/hm/img/Entypo_e700(6)_64.png"))); // NOI18N
         jButton3.setText("addmission");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
 
         jButton4.setBackground(new java.awt.Color(0, 51, 255));
         jButton4.setFont(new java.awt.Font("Segoe UI Light", 0, 24)); // NOI18N
         jButton4.setForeground(new java.awt.Color(255, 255, 255));
         jButton4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/edu/hm/img/Entypo_e731(2)_64.png"))); // NOI18N
         jButton4.setText("patient");
+        jButton4.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton4MouseClicked(evt);
+            }
+        });
 
         jButton5.setBackground(new java.awt.Color(255, 255, 0));
         jButton5.setFont(new java.awt.Font("Segoe UI Light", 0, 24)); // NOI18N
         jButton5.setForeground(new java.awt.Color(255, 255, 255));
         jButton5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/edu/hm/img/Entypo_d83d(5)_64.png"))); // NOI18N
         jButton5.setText("employee");
+        jButton5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton5ActionPerformed(evt);
+            }
+        });
 
         ward.setBackground(new java.awt.Color(0, 153, 153));
         ward.setFont(new java.awt.Font("Segoe UI Light", 0, 24)); // NOI18N
@@ -98,6 +113,11 @@ public class MainFrame extends javax.swing.JPanel {
         jButton6.setForeground(new java.awt.Color(255, 255, 255));
         jButton6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/edu/hm/img/Entypo_e736(3)_64.png"))); // NOI18N
         jButton6.setText("test");
+        jButton6.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton6ActionPerformed(evt);
+            }
+        });
 
         jButton7.setBackground(new java.awt.Color(0, 0, 102));
         jButton7.setFont(new java.awt.Font("Segoe UI Light", 0, 24)); // NOI18N
@@ -167,7 +187,7 @@ public class MainFrame extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-       pnlMain.removeAll();
+        pnlMain.removeAll();
         AddmissionForm form = new AddmissionForm();
         form.setSize(pnlMain.getSize());
         pnlMain.add(form);
@@ -176,7 +196,7 @@ public class MainFrame extends javax.swing.JPanel {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-       pnlMain.removeAll();
+        pnlMain.removeAll();
         AttendanceForm form = new AttendanceForm();
         form.setSize(pnlMain.getSize());
         pnlMain.add(form);
@@ -185,8 +205,49 @@ public class MainFrame extends javax.swing.JPanel {
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void wardActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_wardActionPerformed
-        // TODO add your handling code here:
+        pnlMain.removeAll();
+        WardForm form = new WardForm();
+        form.setSize(pnlMain.getSize());
+        pnlMain.add(form);
+        pnlMain.repaint();
+        pnlMain.revalidate();
     }//GEN-LAST:event_wardActionPerformed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        pnlMain.removeAll();
+        Patient form = new Patient();
+        form.setSize(pnlMain.getSize());
+        pnlMain.add(form);
+        pnlMain.repaint();
+        pnlMain.revalidate();
+    }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void jButton4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton4MouseClicked
+        pnlMain.removeAll();
+        PatientReportForm form = new PatientReportForm();
+        form.setSize(pnlMain.getSize());
+        pnlMain.add(form);
+        pnlMain.repaint();
+        pnlMain.revalidate();
+    }//GEN-LAST:event_jButton4MouseClicked
+
+    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+        pnlMain.removeAll();
+        EmployeeForm form = new EmployeeForm();
+        form.setSize(pnlMain.getSize());
+        pnlMain.add(form);
+        pnlMain.repaint();
+        pnlMain.revalidate();
+    }//GEN-LAST:event_jButton5ActionPerformed
+
+    private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
+        jPanel1.removeAll();
+        TestForm form = new TestForm();
+        form.setSize(jPanel1.getSize());
+        jPanel1.add(form);
+        jPanel1.repaint();
+        jPanel1.revalidate();
+    }//GEN-LAST:event_jButton6ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
