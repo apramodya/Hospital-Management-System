@@ -6,8 +6,8 @@
 package com.edu.hm.dto;
 
 /**
- *
- * @author ASUS
+ * 
+ * @author Jinadi
  */
 public class LeavesDTO {
 

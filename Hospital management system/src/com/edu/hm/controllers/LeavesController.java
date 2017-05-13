@@ -15,8 +15,8 @@ import java.sql.Statement;
 import java.util.ArrayList;
 
 /**
- *
- * @author ASUS
+ * 
+ * @author Jinadi
  */
 public class LeavesController {
 

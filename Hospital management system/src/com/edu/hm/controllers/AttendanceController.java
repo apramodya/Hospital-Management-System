@@ -15,8 +15,8 @@ import java.util.ArrayList;
 
 
 /**
- *
- * @author ASUS
+ * 
+ * @author Jinadi
  */
 public class AttendanceController{
     public static void markAttendanceIn(AttendanceDTO attendance) throws ClassNotFoundException, SQLException{
