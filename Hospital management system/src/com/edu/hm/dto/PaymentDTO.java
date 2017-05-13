@@ -25,6 +25,8 @@ public class PaymentDTO {
         this.discount = discount;
         this.billedValue = billedValue;
     }
+
+   
     /**
      * @return the id
      */
