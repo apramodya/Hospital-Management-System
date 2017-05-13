@@ -193,6 +193,7 @@ public class MainFrame extends javax.swing.JPanel {
         pnlMain.add(form);
         pnlMain.repaint();
         pnlMain.revalidate();
+        Main.panelQuickLink.setVisible(true);
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
@@ -202,6 +203,7 @@ public class MainFrame extends javax.swing.JPanel {
         pnlMain.add(form);
         pnlMain.repaint();
         pnlMain.revalidate();
+        Main.panelQuickLink.setVisible(true);
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void wardActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_wardActionPerformed
@@ -211,6 +213,7 @@ public class MainFrame extends javax.swing.JPanel {
         pnlMain.add(form);
         pnlMain.repaint();
         pnlMain.revalidate();
+        Main.panelQuickLink.setVisible(true);
     }//GEN-LAST:event_wardActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
@@ -220,6 +223,7 @@ public class MainFrame extends javax.swing.JPanel {
         pnlMain.add(form);
         pnlMain.repaint();
         pnlMain.revalidate();
+        Main.panelQuickLink.setVisible(true);
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton4MouseClicked
@@ -229,6 +233,7 @@ public class MainFrame extends javax.swing.JPanel {
         pnlMain.add(form);
         pnlMain.repaint();
         pnlMain.revalidate();
+        Main.panelQuickLink.setVisible(true);
     }//GEN-LAST:event_jButton4MouseClicked
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
@@ -238,6 +243,7 @@ public class MainFrame extends javax.swing.JPanel {
         pnlMain.add(form);
         pnlMain.repaint();
         pnlMain.revalidate();
+        Main.panelQuickLink.setVisible(true);
     }//GEN-LAST:event_jButton5ActionPerformed
 
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
@@ -247,6 +253,7 @@ public class MainFrame extends javax.swing.JPanel {
         jPanel1.add(form);
         jPanel1.repaint();
         jPanel1.revalidate();
+        Main.panelQuickLink.setVisible(true);
     }//GEN-LAST:event_jButton6ActionPerformed
 
 
