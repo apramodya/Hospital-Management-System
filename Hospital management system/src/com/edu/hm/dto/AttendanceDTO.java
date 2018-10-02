@@ -9,6 +9,7 @@ package com.edu.hm.dto;
  * 
  * @author Jinadi
  */
+//attendance
 public class AttendanceDTO {
 
     private EmployeeDTO employeeDTO;
