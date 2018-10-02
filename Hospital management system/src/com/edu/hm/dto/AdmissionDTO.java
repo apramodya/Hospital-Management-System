@@ -9,6 +9,7 @@ package com.edu.hm.dto;
  *
  * @author Jinadi
  */
+//this is admission
 public class AdmissionDTO {
 
     private String aid;
