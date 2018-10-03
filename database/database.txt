@@ -1,3 +1,4 @@
+#database
 drop database hospitalManagementSystem;
 create database hospitalManagementSystem;
 use hospitalManagementSystem;
