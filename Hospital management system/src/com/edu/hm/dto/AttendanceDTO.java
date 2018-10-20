@@ -9,9 +9,9 @@ package com.edu.hm.dto;
  * 
  * @author Jinadi
  */
-//attendance
+//attendance cecwcwc
 public class AttendanceDTO {
-
+//cwcewc
     private EmployeeDTO employeeDTO;
     private String date;
     private String inTime;
