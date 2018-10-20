@@ -9,6 +9,8 @@ package com.edu.hm.dto;
  *
  * @author Jinadi
  */
+//doctor dto
+
 public class DoctorDTO {
 
     private String did;
