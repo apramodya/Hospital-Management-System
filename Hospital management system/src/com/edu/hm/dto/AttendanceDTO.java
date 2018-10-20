@@ -12,6 +12,7 @@ package com.edu.hm.dto;
 //attendance cecwcwc
 public class AttendanceDTO {
 //cwcewc
+    //givbi
     private EmployeeDTO employeeDTO;
     private String date;
     private String inTime;
